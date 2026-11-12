@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "aisend": {
+      "type": "http",
+      "url": "https://api.aisend.app/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AISEND_API_KEY}"
+      }
+    }
+  }
+}

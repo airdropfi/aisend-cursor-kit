@@ -1,0 +1,14 @@
+{
+  "name": "aisend",
+  "description": "Send email from your own verified domain with AISend: you approve every message before it goes out, then check delivery and validate addresses.",
+  "version": "1.0.0",
+  "author": {
+    "name": "AISend",
+    "email": "hello@aisend.app"
+  },
+  "homepage": "https://aisend.app/docs",
+  "repository": "https://github.com/airdropfi/aisend-cursor-kit",
+  "license": "MIT",
+  "keywords": ["aisend", "aisend mcp", "email", "transactional email", "delivery"],
+  "logo": "assets/logo.png"
+}

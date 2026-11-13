@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you refer to this software, please cite it as below."
+type: software
+title: "AISend kit for Cursor"
+abstract: "AISend is a paid transactional email API built for AI agents to operate and humans to supervise: an agent sends from your verified domain, checks delivery and validates addresses over MCP or a Resend-compatible API, while you approve, review and can revoke access."
+authors:
+  - name: "AISend"
+    website: "https://aisend.app"
+repository-code: "https://github.com/airdropfi/aisend-cursor-kit"
+url: "https://aisend.app/mcp"
+license: MIT
+version: 1.0.0
+keywords:
+  - mcp
+  - model-context-protocol
+  - transactional-email
+  - email-api
+  - ai-agents
+  - cursor

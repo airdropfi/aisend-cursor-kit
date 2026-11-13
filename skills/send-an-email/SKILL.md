@@ -13,7 +13,7 @@ The rule of this skill: nothing is sent until the user has seen the exact messag
 
 1. **Sending is real.** `send_email` delivers real mail right away and it cannot be recalled. Before every send, show the user the full message (from, to, subject, body) and wait for a clear yes to that exact message. One approval covers one email: a yes to an earlier draft is not approval for a changed one, and never send "just to test" without asking.
 2. **Idempotency key.** `send_email` requires `idempotency_key`. Use a new unique value (for example a UUID) for each new email. If a send times out or errors, retry with the SAME key so the recipient never gets two copies.
-3. **Verified domains only.** `from` must use a domain the user verified in AISend. If you are not sure, call `list_domains` first and tell the user which domains are verified. Until a domain is verified, the only possible send is test mail from an address at `send.aisend.app` to the user's own AISend account email. Domains are added and verified by the user at https://aisend.app/domains; you cannot do it for them.
+3. **Verified domains only.** `from` must use a domain the user verified in AISend. If you are not sure, call `list_domains` first and tell the user which domains are verified. Sending needs an active paid plan. Until a domain is verified, a paid account can only send from an address at `send.aisend.app` to the user's own AISend account email. Domains are added and verified by the user at https://aisend.app/domains; you cannot do it for them.
 4. **Mail people expect.** One call sends to at most 50 recipients. Do not send to purchased or scraped lists, and do not write deceptive, phishing, impersonating or unsolicited bulk mail. Refuse and explain.
 5. **Validation is metered.** `validate_email` checks format, MX records, disposable providers and role addresses, and each call counts against the account's monthly validation quota. Use it when the user asks or for a handful of addresses, not for long lists.
 6. **Report status as returned.** `get_email_status` and `list_emails` give the delivery status (queued, sending, sent, delivered, failed, bounced, complained) and opened/clicked flags. Say exactly what the tool returned; never claim an email was delivered unless the status says so.
@@ -23,7 +23,7 @@ The rule of this skill: nothing is sent until the user has seen the exact messag
 
 ## Steps
 
-1. Call `list_domains`. Pick a `from` on a verified domain. If none is verified, say that only test mail from an address at `send.aisend.app` to the user's own AISend account email is possible, and point to https://aisend.app/domains.
+1. Call `list_domains`. Pick a `from` on a verified domain. If none is verified, say that a paid account can, until then, only send from an address at `send.aisend.app` to the user's own AISend account email, and point to https://aisend.app/domains.
 2. Draft the message with the user: from, to (at most 50), subject, and an HTML and/or text body. Optional `reply_to`.
 3. Show it exactly as it will be sent. Say that sending is real and cannot be recalled. Ask "Send it?"
 4. After a clear yes, call `send_email` once with a new unique `idempotency_key`. On a timeout or error retry with the same key.
